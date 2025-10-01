@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muhabin- <muhabin-@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: muhabin- <muhabin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:07:49 by muhabin-          #+#    #+#             */
-/*   Updated: 2025/10/01 14:19:11 by muhabin-         ###   ########.fr       */
+/*   Updated: 2025/10/01 22:29:52 by muhabin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@ const int Fixed::FractionalBits = 8;
 Fixed::Fixed() : FixedPointValue(0){
 	std::cout << GREEN << "Default Constructor is Called" << RESET << std::endl;
 }
-
+Fixed::Fixed(const int wholeNumber){
+	std::cout << BLUE << "Integers Constructor is Called" << RESET << std::endl;
+	this->FixedPointValue = wholeNumber << FractionalBits; // Tmr need to study this
+}
+Fixed::Fixed(const float deciNumber){
+	std::cout << GREEN << "Float Constructor is Called" << RESET << std::endl;
+	this->FixedPointValue = roundf(deciNumber * (1 << FractionalBits)); // this too need study but understand abit
+}
 Fixed::~Fixed(){
 	std::cout << RED << "Destructor is Called" << RESET << std::endl;
 }
@@ -40,4 +47,15 @@ int Fixed::getRawBits(void)const {
 
 void Fixed::setRawBits(const int raw){
 	this->FixedPointValue = raw;
+}
+
+int Fixed::toInt(void) const{
+	return (this->FixedPointValue >> FractionalBits);
+}
+float Fixed::toFloat(void) const{
+	return ((float)this->FixedPointValue / (1 >> FractionalBits));
+}
+std::ostream& operator<<(std::ostream& os, const Fixed& obj){
+	os << obj.toFloat();
+	return os;
 }

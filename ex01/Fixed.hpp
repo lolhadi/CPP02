@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muhabin- <muhabin-@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: muhabin- <muhabin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 21:04:23 by muhabin-          #+#    #+#             */
-/*   Updated: 2025/10/01 18:35:55 by muhabin-         ###   ########.fr       */
+/*   Updated: 2025/10/01 21:52:44 by muhabin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class Fixed{
 	public:
 		//consturctor
 		Fixed(); // Default Constructor
-		Fixed(const int);
-		Fixed(const float);
+		Fixed(const int wholeNumber);
+		Fixed(const float deciNumber);
 		Fixed(const Fixed &other); // Copy Constructor
 		Fixed& operator = (const Fixed &other); // Copy Assignment Operator
 		~Fixed(); // Destructor
@@ -43,6 +43,17 @@ class Fixed{
 		int toInt(void)const;
 
 };
-	std::ostream& operator<<(std::ostream & os, const Fixed& obj);
+	std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+	/*
+		*std::ostream -> return type, we want return the output stream
+			(std::cout) so i can chain :
+			std::cout << a << b << c
+		*operator<< -> defining what << means for Fixed
+		* Parameters:
+			#std::ostream& os-> the stream we are writing into(mcm cout)
+			#const Fixed& obj-> the object we want to print
+		*Implementation
+			os << obj.toFloat();
+	*/
 
 #endif

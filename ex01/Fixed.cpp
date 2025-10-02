@@ -6,7 +6,7 @@
 /*   By: muhabin- <muhabin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:07:49 by muhabin-          #+#    #+#             */
-/*   Updated: 2025/10/02 11:32:43 by muhabin-         ###   ########.fr       */
+/*   Updated: 2025/10/02 20:18:24 by muhabin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ Fixed::Fixed() : FixedPointValue(0){
 }
 Fixed::Fixed(const int wholeNumber){
 	std::cout << BLUE << "Integers Constructor is Called" << RESET << std::endl;
-	this->FixedPointValue = wholeNumber << FractionalBits; // Tmr need to study this
+	this->FixedPointValue = wholeNumber << FractionalBits;
 }
 Fixed::Fixed(const float deciNumber){
 	std::cout << GREEN << "Float Constructor is Called" << RESET << std::endl;
-	this->FixedPointValue = roundf(deciNumber * (1 << FractionalBits)); // this too need study but understand abit
+	this->FixedPointValue = roundf(deciNumber * (1 << FractionalBits));
 }
 Fixed::~Fixed(){
 	std::cout << RED << "Destructor is Called" << RESET << std::endl;

@@ -6,7 +6,7 @@
 /*   By: muhabin- <muhabin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 21:04:23 by muhabin-          #+#    #+#             */
-/*   Updated: 2025/10/02 20:18:36 by muhabin-         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:52:50 by muhabin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,40 @@ class Fixed{
 		~Fixed(); // Destructor
 
 		// Member Function
+
 		int getRawBits(void) const; // Function won't modified the object
 		void setRawBits(const int raw);
+
+		// Convert Fixed-point value Shift Bits Function
 		float toFloat(void)const;
 		int toInt(void)const;
 
-};
+		// Comparison Operator
+		bool operator>(Fixed const &other) const;
+		bool operator<(Fixed const &other) const;
+		bool operator>=(Fixed const &other) const;
+		bool operator<=(Fixed const &other) const;
+		bool operator==(Fixed const &other) const;
+		bool operator!=(Fixed const &other) const;
+
+		// Arithmetic Operator
+		Fixed operator+(Fixed const &other) const;
+		Fixed operator-(Fixed const &other) const;
+		Fixed operator*(Fixed const &other) const;
+		Fixed operator/(Fixed const &other) const;
+
+		// Increament / Decrement
+		Fixed& operator++();
+		Fixed& operator--();
+		Fixed operator++(int);
+		Fixed operator--(int);
+
+		//Overloaded member function
+		static Fixed& min(Fixed &a, Fixed &b);
+		static const Fixed& min(const Fixed &a, const Fixed &b);
+		static Fixed& max(Fixed &a, Fixed &b);
+		static const Fixed& max(const Fixed &a, const Fixed &b);
+	};
 	std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
 #endif
